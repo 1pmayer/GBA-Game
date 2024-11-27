@@ -350,21 +350,20 @@ struct Player {
     /* the animation counter counts how many frames until we flip */
     int counter;
 
-    /* whether the koopa is moving right now or not */
+    /* whether the player is moving right now or not */
     int move;
     
     int facing;
 
-    /* the number of pixels away from the edge of the screen the koopa stays */
+    /* the number of pixels away from the edge of the screen the player stays */
     int border;
 
-    /* if the koopa is currently falling */
     int health;
     
     int invincible;
 };
 
-/* initialize the koopa */
+/* initialize the player */
 void player_init(struct Player* player) {
     player->x = 100;
     player->y = 113;
@@ -497,7 +496,7 @@ unsigned short tile_lookup(int x, int y, int xscroll, int yscroll,
     return tilemap[index + offset];
 }
 
-/* move the koopa left or right returns if it is at edge of the screen */
+/* move the player left, right, up, or down. returns if it is at edge of the screen */
 int player_left(struct Player* player, int xscroll, int yscroll) {
     /* face left */
     sprite_set_horizontal_flip(player->sprite, 1);
@@ -941,7 +940,7 @@ int main() {
     /* clear all the sprites on screen now */
     sprite_clear();
 
-    /* create the koopa */
+    /* create the player */
     struct Player player;
     player_init(&player);
     
